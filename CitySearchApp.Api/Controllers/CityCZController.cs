@@ -33,5 +33,27 @@ namespace CitySearchApp.Api.Controllers
             var cities = await _mediator.Send(new GetCityCZListRequest {  parameters = parameters });
             return Ok(cities);
         }
+
+        [HttpGet("Kraje/")]
+        public async Task<IActionResult> Kraje()
+        {
+            var kraje = await _mediator.Send(new GetCityCZKrajeRequest());
+            return Ok(kraje);
+        }
+
+        [HttpGet("Count/")]
+        [HttpGet("Count/{Kraj}")]
+        [HttpGet("Count/{Obec}/ObecList")]
+        public async Task<IActionResult> CitiesCount(string? Obec = null, string? Kraj = null)
+        {
+            CityShortSearchDto parameters = new()
+            {
+                Kraj = Kraj,
+                Obec = Obec
+            };
+           
+            var count = await _mediator.Send(new GetCityCZCountRequest { shortSearchDto = parameters });
+            return Ok(count);
+        }
     }
 }
