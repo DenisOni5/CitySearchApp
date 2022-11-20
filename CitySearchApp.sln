@@ -13,15 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD846F49-05C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{849EBED6-B599-40F0-B579-142446E859E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySearchApp.Application", "CitySearchApp.Application\CitySearchApp.Application.csproj", "{DB419491-F006-49B4-9BAD-43FDA03C611F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CitySearchApp.Application", "CitySearchApp.Application\CitySearchApp.Application.csproj", "{DB419491-F006-49B4-9BAD-43FDA03C611F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySearchApp.Domain", "CitySearchApp.Domain\CitySearchApp.Domain.csproj", "{02D55B8E-7E7A-40A9-B8F9-6A152D4ADB7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CitySearchApp.Domain", "CitySearchApp.Domain\CitySearchApp.Domain.csproj", "{02D55B8E-7E7A-40A9-B8F9-6A152D4ADB7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{0C4D89BD-3950-41B5-B4B1-77DB1850A2A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySearchApp.Persistance", "CitySearchApp.Persistance\CitySearchApp.Persistance.csproj", "{343CFA71-4C4D-4CC6-81D2-4871EA830A6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CitySearchApp.Persistance", "CitySearchApp.Persistance\CitySearchApp.Persistance.csproj", "{343CFA71-4C4D-4CC6-81D2-4871EA830A6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySearchApp.Api", "CitySearchApp.Api\CitySearchApp.Api.csproj", "{44D868CB-0AC9-4599-B8D8-A69E9595C851}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CitySearchApp.Api", "CitySearchApp.Api\CitySearchApp.Api.csproj", "{44D868CB-0AC9-4599-B8D8-A69E9595C851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CitySearchApp.ApplicationUnitTests", "CitySearchApp.ApplicationUnitTests\CitySearchApp.ApplicationUnitTests.csproj", "{141F8D2C-C037-4CC5-8A68-C85F2B8A7892}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{44D868CB-0AC9-4599-B8D8-A69E9595C851}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44D868CB-0AC9-4599-B8D8-A69E9595C851}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44D868CB-0AC9-4599-B8D8-A69E9595C851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{141F8D2C-C037-4CC5-8A68-C85F2B8A7892}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{141F8D2C-C037-4CC5-8A68-C85F2B8A7892}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{141F8D2C-C037-4CC5-8A68-C85F2B8A7892}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{141F8D2C-C037-4CC5-8A68-C85F2B8A7892}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{0C4D89BD-3950-41B5-B4B1-77DB1850A2A4} = {BD846F49-05C2-4DE8-83A1-7FE68C5D804C}
 		{343CFA71-4C4D-4CC6-81D2-4871EA830A6C} = {849EBED6-B599-40F0-B579-142446E859E5}
 		{44D868CB-0AC9-4599-B8D8-A69E9595C851} = {FAE2BC7A-A6D1-4B9D-AFEA-0B84889F588D}
+		{141F8D2C-C037-4CC5-8A68-C85F2B8A7892} = {69CA9813-626E-4B52-B219-449B461C7B09}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C11C5C60-05F9-40B3-A09D-0F9217F81822}
