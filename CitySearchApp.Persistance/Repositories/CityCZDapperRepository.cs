@@ -45,7 +45,7 @@ namespace CitySearchApp.Persistance.Repositories
 
             return kraje;
         }
-        public async Task<List<CityCZDto>> LoadCitiesWithParam(object parameters, string storedprocedure)
+        public async Task<List<CityCZDto>> LoadCitiesWithParam(CityCoordsSearchDto parameters, string storedprocedure)
         {
             var cities = _mapper.Map<List<CityCZDto>>(await LoadDataWithParamAsync<CityCZ>(storedprocedure, parameters));
 

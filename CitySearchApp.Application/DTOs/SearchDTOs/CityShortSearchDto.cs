@@ -11,7 +11,7 @@ namespace CitySearchApp.Application.DTOs.SearchDTOs
         private string? obec;
 
         public string? Kraj { get; set; }
-        public string? Obec { get => obec; set => obec = System.Net.WebUtility.UrlDecode(value); }
+        public string? Obec { get; set; }
         public int PerPage { get; set; } = 10;
         public int PageNum { get; set; } = 1;
     }

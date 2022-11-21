@@ -1,0 +1,90 @@
+﻿@using CitySearchApp.MVC.Models
+@model CitySearchApp.MVC.Models.CityDisplayModelVM
+
+@{
+    ViewData["Title"] = @Model.ControllerName;
+    String search = @Model.Obec;
+    String decodedSearch = System.Net.WebUtility.UrlDecode(search);
+}
+
+<h1>@Model.ControllerName - @Model.Cities.Count()</h1>
+<h2>Page generated in @Model.TimeGenerated m/s/ms</h2>
+<h3 id="mylocation"></h3>
+<form name="CitySearch" action="/@Model.ControllerName/" method="get">
+    <p>
+        Obec: <input type="text" name="Obec" id="Obec" asp-for="@decodedSearch">
+        <input type="submit" value="Hledat" />
+    </p>
+    <select asp-for="@Model.Kraj" asp-items="@Model.KrajeEnum" onchange="this.form.submit()">
+        <option value="">Please select one</option>
+    </select>
+    <input type="button" id="resetButton" value="Storno" onclick="window.location.href = '/@Model.ControllerName';" / />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cities.First().Obec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cities.First().Okres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cities.First().Kraj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cities.First().PSC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cities.First().Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cities.First().Longitude)
+            </th>
+            @if (Model.ControllerName == "Cities")
+            {
+                @if (Model.Cities?.First()?.Distance > 0)
+                {
+                    <th>@Html.DisplayNameFor(model => model.Cities.First().Distance)</th>
+                }
+            }
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Obec)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Okres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kraj)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PSC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                @if (Model.ControllerName == "Cities")
+                {
+                    @if (item.Distance > 0)
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.Distance) km</td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+     @Html.Raw(Model.Paging?.paginstring.ToString())
+</nav>
