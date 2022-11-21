@@ -66,7 +66,8 @@ namespace CitySearchApp.MVC.Repositories
             {
                 if (Kraj != "")
                 {
-                    extraQstringToAdd += $"/{System.Net.WebUtility.UrlEncode(Kraj)}";
+                    string KrajEncoded = new string(System.Net.WebUtility.UrlEncode(Kraj));
+                    extraQstringToAdd += $"/{KrajEncoded}";
                     Kraj = System.Net.WebUtility.UrlDecode(Kraj);
                     parameters.Kraj = Kraj;
                 }
@@ -75,7 +76,8 @@ namespace CitySearchApp.MVC.Repositories
             {
                 if (Obec != "")
                 {
-                    extraQstringToAdd += $"/{System.Net.WebUtility.UrlEncode(Obec)}/ObecList";
+                    string ObecEncoded = new string(System.Net.WebUtility.UrlEncode(Obec));
+                    extraQstringToAdd += $"/{ObecEncoded}/ObecList";
                     Obec = System.Net.WebUtility.UrlDecode(Obec);
                     parameters.Obec = Obec;
                 }
