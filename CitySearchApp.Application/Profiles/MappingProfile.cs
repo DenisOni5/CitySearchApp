@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CitySearchApp.Application.DTOs;
+using CitySearchApp.Application.DTOs.SearchDTOs;
 using CitySearchApp.Domain;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace CitySearchApp.Application.Profiles
         {
             CreateMap<CityCZ,CityCZDto>().ReverseMap();
             CreateMap<CitySK,CitySKDto>().ReverseMap();
+            CreateMap<CityShortSearchDto,CityLongSearchDto>().ReverseMap();
         }
     }
 }

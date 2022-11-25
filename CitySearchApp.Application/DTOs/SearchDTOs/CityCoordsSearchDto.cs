@@ -11,6 +11,6 @@ namespace CitySearchApp.Application.DTOs.SearchDTOs
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public int Distance { get; set; } = 20;
-        public int Count { get; set; }
+        public int Count { get; set; } = 10;
     }
 }

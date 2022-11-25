@@ -22,48 +22,21 @@ namespace CitySearchApp.MVC.Services.Base
     {
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(int pageNum, string obec, string kraj);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(string kraj, string obec, int? perPage, int? pageNum);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(string kraj, string obec, int? perPage, int? pageNum, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ2Async(int pageNum, string obec, string kraj);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ2Async(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAllAsync(int pageNum, string obec, string kraj);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CoordsAsync(double? latitude, double? longitude, int? distance, int? count);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAllAsync(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAll2Async(int pageNum, string obec, string kraj);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAll2Async(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ3Async(double latitude, double longitude);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ3Async(double latitude, double longitude, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CoordsAsync(double? latitude, double? longitude, int? distance, int? count, System.Threading.CancellationToken cancellationToken);
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -76,30 +49,12 @@ namespace CitySearchApp.MVC.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> CountAsync(string obec, string kraj);
+        System.Threading.Tasks.Task<int> CountAsync(string kraj, string obec, int? perPage, int? pageNum);
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> CountAsync(string obec, string kraj, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> Count2Async(string obec, string kraj);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> Count2Async(string obec, string kraj, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> ObecListAsync(string obec, string kraj);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<int> ObecListAsync(string obec, string kraj, System.Threading.CancellationToken cancellationToken);
+        System.Threading.Tasks.Task<int> CountAsync(string kraj, string obec, int? perPage, int? pageNum, System.Threading.CancellationToken cancellationToken);
 
     }
 
@@ -132,203 +87,33 @@ namespace CitySearchApp.MVC.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(int pageNum, string obec, string kraj)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(string kraj, string obec, int? perPage, int? pageNum)
         {
-            return CityCZAsync(pageNum, obec, kraj, System.Threading.CancellationToken.None);
+            return CityCZAsync(kraj, obec, perPage, pageNum, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZAsync(string kraj, string obec, int? perPage, int? pageNum, System.Threading.CancellationToken cancellationToken)
         {
-            if (pageNum == null)
-                throw new System.ArgumentNullException("pageNum");
-
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/CityCZ/{pageNum}?");
-            urlBuilder_.Replace("{pageNum}", System.Uri.EscapeDataString(ConvertToString(pageNum, System.Globalization.CultureInfo.InvariantCulture)));
-            if (obec != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Obec") + "=").Append(System.Uri.EscapeDataString(ConvertToString(obec, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
+            urlBuilder_.Append("api/CityCZ?");
             if (kraj != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("Kraj") + "=").Append(System.Uri.EscapeDataString(ConvertToString(kraj, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<CityCZDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ2Async(int pageNum, string obec, string kraj)
-        {
-            return CityCZ2Async(pageNum, obec, kraj, System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ2Async(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken)
-        {
-            if (pageNum == null)
-                throw new System.ArgumentNullException("pageNum");
-
-            if (kraj == null)
-                throw new System.ArgumentNullException("kraj");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/CityCZ/{pageNum}/{Kraj}?");
-            urlBuilder_.Replace("{pageNum}", System.Uri.EscapeDataString(ConvertToString(pageNum, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{Kraj}", System.Uri.EscapeDataString(ConvertToString(kraj, System.Globalization.CultureInfo.InvariantCulture)));
             if (obec != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("Obec") + "=").Append(System.Uri.EscapeDataString(ConvertToString(obec, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
+            if (perPage != null)
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<CityCZDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
+                urlBuilder_.Append(System.Uri.EscapeDataString("PerPage") + "=").Append(System.Uri.EscapeDataString(ConvertToString(perPage, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            finally
+            if (pageNum != null)
             {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAllAsync(int pageNum, string obec, string kraj)
-        {
-            return ObecListAllAsync(pageNum, obec, kraj, System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAllAsync(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken)
-        {
-            if (pageNum == null)
-                throw new System.ArgumentNullException("pageNum");
-
-            if (obec == null)
-                throw new System.ArgumentNullException("obec");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/CityCZ/{pageNum}/{Obec}/ObecList?");
-            urlBuilder_.Replace("{pageNum}", System.Uri.EscapeDataString(ConvertToString(pageNum, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{Obec}", System.Uri.EscapeDataString(ConvertToString(obec, System.Globalization.CultureInfo.InvariantCulture)));
-            if (kraj != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Kraj") + "=").Append(System.Uri.EscapeDataString(ConvertToString(kraj, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(System.Uri.EscapeDataString("PageNum") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageNum, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
 
@@ -393,112 +178,35 @@ namespace CitySearchApp.MVC.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAll2Async(int pageNum, string obec, string kraj)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CoordsAsync(double? latitude, double? longitude, int? distance, int? count)
         {
-            return ObecListAll2Async(pageNum, obec, kraj, System.Threading.CancellationToken.None);
+            return CoordsAsync(latitude, longitude, distance, count, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> ObecListAll2Async(int pageNum, string obec, string kraj, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CoordsAsync(double? latitude, double? longitude, int? distance, int? count, System.Threading.CancellationToken cancellationToken)
         {
-            if (pageNum == null)
-                throw new System.ArgumentNullException("pageNum");
-
-            if (obec == null)
-                throw new System.ArgumentNullException("obec");
-
-            if (kraj == null)
-                throw new System.ArgumentNullException("kraj");
-
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/CityCZ/{pageNum}/{Kraj}/{Obec}/ObecList");
-            urlBuilder_.Replace("{pageNum}", System.Uri.EscapeDataString(ConvertToString(pageNum, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{Obec}", System.Uri.EscapeDataString(ConvertToString(obec, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{Kraj}", System.Uri.EscapeDataString(ConvertToString(kraj, System.Globalization.CultureInfo.InvariantCulture)));
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
+            urlBuilder_.Append("api/CityCZ/Coords?");
+            if (latitude != null)
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<CityCZDto>>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
+                urlBuilder_.Append(System.Uri.EscapeDataString("Latitude") + "=").Append(System.Uri.EscapeDataString(ConvertToString(latitude, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            finally
+            if (longitude != null)
             {
-                if (disposeClient_)
-                    client_.Dispose();
+                urlBuilder_.Append(System.Uri.EscapeDataString("Longitude") + "=").Append(System.Uri.EscapeDataString(ConvertToString(longitude, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-        }
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ3Async(double latitude, double longitude)
-        {
-            return CityCZ3Async(latitude, longitude, System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CityCZDto>> CityCZ3Async(double latitude, double longitude, System.Threading.CancellationToken cancellationToken)
-        {
-            if (latitude == null)
-                throw new System.ArgumentNullException("latitude");
-
-            if (longitude == null)
-                throw new System.ArgumentNullException("longitude");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/CityCZ/latitude={latitude}/longitude={longitude}");
-            urlBuilder_.Replace("{latitude}", System.Uri.EscapeDataString(ConvertToString(latitude, System.Globalization.CultureInfo.InvariantCulture)));
-            urlBuilder_.Replace("{longitude}", System.Uri.EscapeDataString(ConvertToString(longitude, System.Globalization.CultureInfo.InvariantCulture)));
+            if (distance != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("Distance") + "=").Append(System.Uri.EscapeDataString(ConvertToString(distance, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            if (count != null)
+            {
+                urlBuilder_.Append(System.Uri.EscapeDataString("Count") + "=").Append(System.Uri.EscapeDataString(ConvertToString(count, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+            }
+            urlBuilder_.Length--;
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -635,191 +343,33 @@ namespace CitySearchApp.MVC.Services.Base
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<int> CountAsync(string obec, string kraj)
+        public virtual System.Threading.Tasks.Task<int> CountAsync(string kraj, string obec, int? perPage, int? pageNum)
         {
-            return CountAsync(obec, kraj, System.Threading.CancellationToken.None);
+            return CountAsync(kraj, obec, perPage, pageNum, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> CountAsync(string obec, string kraj, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<int> CountAsync(string kraj, string obec, int? perPage, int? pageNum, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append("api/CityCZ/Count?");
-            if (obec != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Obec") + "=").Append(System.Uri.EscapeDataString(ConvertToString(obec, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
-            }
             if (kraj != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("Kraj") + "=").Append(System.Uri.EscapeDataString(ConvertToString(kraj, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<int>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<int> Count2Async(string obec, string kraj)
-        {
-            return Count2Async(obec, kraj, System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> Count2Async(string obec, string kraj, System.Threading.CancellationToken cancellationToken)
-        {
-            if (kraj == null)
-                throw new System.ArgumentNullException("kraj");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/CityCZ/Count/{Kraj}?");
-            urlBuilder_.Replace("{Kraj}", System.Uri.EscapeDataString(ConvertToString(kraj, System.Globalization.CultureInfo.InvariantCulture)));
             if (obec != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("Obec") + "=").Append(System.Uri.EscapeDataString(ConvertToString(obec, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            urlBuilder_.Length--;
-
-            var client_ = _httpClient;
-            var disposeClient_ = false;
-            try
+            if (perPage != null)
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    request_.Method = new System.Net.Http.HttpMethod("GET");
-                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    var disposeResponse_ = true;
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
-                        {
-                            var objectResponse_ = await ReadObjectResponseAsync<int>(response_, headers_, cancellationToken).ConfigureAwait(false);
-                            if (objectResponse_.Object == null)
-                            {
-                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
-                            }
-                            return objectResponse_.Object;
-                        }
-                        else
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
-                        }
-                    }
-                    finally
-                    {
-                        if (disposeResponse_)
-                            response_.Dispose();
-                    }
-                }
+                urlBuilder_.Append(System.Uri.EscapeDataString("PerPage") + "=").Append(System.Uri.EscapeDataString(ConvertToString(perPage, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
-            finally
+            if (pageNum != null)
             {
-                if (disposeClient_)
-                    client_.Dispose();
-            }
-        }
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<int> ObecListAsync(string obec, string kraj)
-        {
-            return ObecListAsync(obec, kraj, System.Threading.CancellationToken.None);
-        }
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<int> ObecListAsync(string obec, string kraj, System.Threading.CancellationToken cancellationToken)
-        {
-            if (obec == null)
-                throw new System.ArgumentNullException("obec");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api/CityCZ/Count/{Obec}/ObecList?");
-            urlBuilder_.Replace("{Obec}", System.Uri.EscapeDataString(ConvertToString(obec, System.Globalization.CultureInfo.InvariantCulture)));
-            if (kraj != null)
-            {
-                urlBuilder_.Append(System.Uri.EscapeDataString("Kraj") + "=").Append(System.Uri.EscapeDataString(ConvertToString(kraj, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
+                urlBuilder_.Append(System.Uri.EscapeDataString("PageNum") + "=").Append(System.Uri.EscapeDataString(ConvertToString(pageNum, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
             }
             urlBuilder_.Length--;
 

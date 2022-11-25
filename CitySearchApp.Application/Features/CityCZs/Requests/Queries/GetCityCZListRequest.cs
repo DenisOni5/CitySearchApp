@@ -11,6 +11,6 @@ namespace CitySearchApp.Application.Features.CityCZs.Requests.Queries
 {
     public class GetCityCZListRequest : IRequest<List<CityCZDto>>
     {
-        public CityLongSearchDto parameters { get; set; }
+        public CityShortSearchDto parameters { get; set; }
     }
 }

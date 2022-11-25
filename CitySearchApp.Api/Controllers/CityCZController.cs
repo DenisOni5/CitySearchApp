@@ -18,38 +18,20 @@ namespace CitySearchApp.Api.Controllers
         }
 
 
-        [HttpGet("{pageNum}/")]
-        [HttpGet("{pageNum}/{Kraj}")]
-        [HttpGet("{pageNum}/{Obec}/ObecList")]
-        [HttpGet("{pageNum}/{Kraj}/{Obec}/ObecList")]
-        public async Task<ActionResult<IQueryable<CityCZDto>>> Cities(int pageNum = 1, string? Obec = null, string? Kraj = null)
+        [HttpGet]
+        public async Task<ActionResult<IQueryable<CityCZDto>>> Cities(CityShortSearchDto searchDto)
         {
-            CityLongSearchDto parameters = new()
-            {
-                Kraj = Kraj,
-                Obec = Obec,
-                PageNum = pageNum,
-                PerPage = 10
-            };
-
-            var cities = await _mediator.Send(new GetCityCZListRequest {  parameters = parameters });
+            var cities = await _mediator.Send(new GetCityCZListRequest {  parameters = searchDto });
             return Ok(cities);
         }
 
-        [HttpGet("latitude={latitude}/longitude={longitude}")]
-        public async Task<ActionResult<IQueryable<CityCZDto>>> CitiesCoords(double latitude, double longitude)
+        [HttpGet("Coords/")]
+        public async Task<ActionResult<IQueryable<CityCZDto>>> CitiesCoords(CityCoordsSearchDto searchDto)
         {
-            CityCoordsSearchDto parametersfloat = new()
-            {
-                Latitude = latitude,
-                Longitude = longitude,
-                Distance = 20,
-                Count = 10
-            };
 
             var citiescoords = await _mediator.Send(new GetCityCZListWithCoordsRequest
             {
-                parameters = parametersfloat,
+                parameters = searchDto,
                 storedprocedure = "dbo." + nameof(dbo.GetNearestCity)
             });
             return Ok(citiescoords);
@@ -64,17 +46,10 @@ namespace CitySearchApp.Api.Controllers
         }
 
         [HttpGet("Count/")]
-        [HttpGet("Count/{Kraj}")]
-        [HttpGet("Count/{Obec}/ObecList")]
-        public async Task<ActionResult<int>> CitiesCount(string? Obec = null, string? Kraj = null)
+        public async Task<ActionResult<int>> CitiesCount(CityShortSearchDto searchDto)
         {
-            CityShortSearchDto parameters = new()
-            {
-                Kraj = Kraj,
-                Obec = Obec
-            };
            
-            var count = await _mediator.Send(new GetCityCZCountRequest { shortSearchDto = parameters });
+            var count = await _mediator.Send(new GetCityCZCountRequest { shortSearchDto = searchDto });
             return Ok(count);
         }
     }
