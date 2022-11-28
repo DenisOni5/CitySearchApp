@@ -22,7 +22,7 @@ namespace CitySearchApp.ApplicationUnitTests.CityCZ.Queries
     {
         private readonly IMapper _mapper;
         private readonly Mock<ICityCZRepository> _mockRepo;
-        private readonly CityLongSearchDto _searchDto;
+        private readonly CityShortSearchDto _shortSearchDto;
         public GetCityCZListRequestHandlerTests()
         {
             var mapperConfig = new MapperConfiguration(c =>
@@ -34,9 +34,9 @@ namespace CitySearchApp.ApplicationUnitTests.CityCZ.Queries
 
             _mapper = mapperConfig.CreateMapper();
 
-            _searchDto = new CityLongSearchDto();
+            _shortSearchDto = new CityShortSearchDto();
 
-            _mockRepo = MockCityCZRepository.GetCityCZRepository(_searchDto);
+            _mockRepo = MockCityCZRepository.GetCityCZRepository();
         }
 
         [Fact]
@@ -44,12 +44,12 @@ namespace CitySearchApp.ApplicationUnitTests.CityCZ.Queries
         {
             var hadler = new GetCityCZListRequestHandler(_mockRepo.Object, _mapper);
 
-            var result = await hadler.Handle(new GetCityCZListRequest { parameters = _searchDto }, CancellationToken.None);
+            var result = await hadler.Handle(new GetCityCZListRequest { parameters = _shortSearchDto }, CancellationToken.None);
 
 
             result.ShouldBeOfType<List<CityCZDto>>();
 
-           // result.Count.ShouldBe(3);
+            result.Count.ShouldBe(3);
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace CitySearchApp.ApplicationUnitTests.CityCZ.Queries
 
             var hadler = new GetCityCZCountRequestHandler(_mockRepo.Object);
 
-            var result = await hadler.Handle(new GetCityCZCountRequest { shortSearchDto = _searchDto }, CancellationToken.None);
+            var result = await hadler.Handle(new GetCityCZCountRequest { shortSearchDto = _shortSearchDto }, CancellationToken.None);
 
             result.ShouldBe(3);
         }

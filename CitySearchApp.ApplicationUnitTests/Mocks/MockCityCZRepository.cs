@@ -13,7 +13,7 @@ namespace CitySearchApp.ApplicationUnitTests.Mocks
 {
     public static class MockCityCZRepository
     {
-        public static Mock<ICityCZRepository> GetCityCZRepository(CityLongSearchDto searchDto)
+        public static Mock<ICityCZRepository> GetCityCZRepository()
         {
             var cities = new List<CitySearchApp.Domain.CityCZ>
             {
@@ -57,9 +57,9 @@ namespace CitySearchApp.ApplicationUnitTests.Mocks
 
             var mockRepo = new Mock<ICityCZRepository>();
 
-            mockRepo.Setup(r => r.LoadCitiesWithParam(searchDto)).Returns(cities);
+            mockRepo.Setup(r => r.LoadCitiesWithParam(It.IsAny<CityLongSearchDto>())).Returns(cities);
 
-            mockRepo.Setup(r => r.GetCityCount(searchDto)).Returns(cities.Count);
+            mockRepo.Setup(r => r.GetCityCount(It.IsAny<CityShortSearchDto>())).Returns(cities.Count);
 
             mockRepo.Setup(r => r.GetKraje()).Returns(cities.Select(c=>c.Kraj).Distinct().ToList());
 
