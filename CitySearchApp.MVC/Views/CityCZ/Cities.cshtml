@@ -43,12 +43,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Cities.First().Longitude)
             </th>
-            @if (Model.ControllerName == "Cities")
+            @if (Model.ControllerName == "CitiesCoords")
             {
-                @if (Model.Cities?.First()?.Distance > 0)
-                {
-                    <th>@Html.DisplayNameFor(model => model.Cities.First().Distance)</th>
-                }
+            <th>@Html.DisplayNameFor(model => model.Cities.First().Distance)</th>
             }
             <th></th>
         </tr>
@@ -75,9 +72,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Longitude)
                 </td>
-                @if (Model.ControllerName == "Cities")
+                @if (Model.ControllerName == "CitiesCoords")
                 {
-                    @if (item.Distance > 0)
+                    @if (item.Distance >= 0)
                     {
                         <td>@Html.DisplayFor(modelItem => item.Distance) km</td>
                     }
@@ -94,3 +91,28 @@
         )
     }
 </nav>
+@if (Model.ControllerName == "CitiesCoords") {
+
+    <script>
+
+        var x = document.getElementById("mylocation");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "My Location - Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude;
+            if (window.location.href.indexOf("?") == -1 || window.location.href.split('?')[1].split('=')[1] != "false")
+                window.location = window.location + '/latitude=' + position.coords.latitude + "/longitude=" + position.coords.longitude + "?show=false";
+        }
+    </script>
+}
+else {
+    <script>
+        function getLocation() {};
+    </script>
+}

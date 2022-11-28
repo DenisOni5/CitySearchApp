@@ -27,9 +27,9 @@ namespace CitySearchApp.MVC.Controllers
 
             return View(await _repository.GetCityDisplayModel(parameters, pageNum, perpage, nameof(Cities)));
         }
-
-        [Route("/Cities/latitude={latitude}/longitude={longitude}")]
-        public async Task<ViewResult> Cities(double latitude, double longitude)
+        [Route("/CitiesCoords")]
+        [Route("/CitiesCoords/latitude={latitude}/longitude={longitude}")]
+        public async Task<ViewResult> CitiesCoords(double latitude, double longitude)
         {
             CityCoordsSearchVM parametersfloat = new()
             {
@@ -38,7 +38,7 @@ namespace CitySearchApp.MVC.Controllers
                 Distance = 20,
                 Count = 10
             };
-            return View(await _repository.GetCityDisplayModel(parametersfloat, nameof(Cities)));
+            return View(nameof(Cities), await _repository.GetCityDisplayModel(parametersfloat, nameof(CitiesCoords)));
         }
     }
 }

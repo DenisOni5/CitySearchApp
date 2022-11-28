@@ -25,6 +25,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="CityCZ" asp-action="Cities">CitiesCZ</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="CityCZ" asp-action="CitiesCoords">Nearby cities</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -45,27 +48,11 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-        <script>
+    <script>
         $(document).ready(function () {
             getLocation();
         });
-
-        var x = document.getElementById("mylocation");
-        function getLocation() {
-            if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }  
-
-        function showPosition(position) {
-            x.innerHTML = "My Location - Latitude: " + position.coords.latitude + " Longitude: " + position.coords.longitude;
-            if (window.location.href.indexOf("?") == -1 || window.location.href.split('?')[1].split('=')[1] != "false")
-            window.location = window.location + '/latitude=' + position.coords.latitude + "/longitude=" + position.coords.longitude + "?show=false";
-        }
     </script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
