@@ -46,7 +46,7 @@ namespace CitySearchApp.Application.Features.CityCZs.Handles.Queries
             parametersnew.start = start;
             parametersnew.finish = finish;
 
-            var citiesCz = _repository.LoadCitiesWithParam(parametersnew);
+            var citiesCz = await _repository.LoadCitiesWithParam(parametersnew);
             return _mapper.Map<List<CityCZDto>>(citiesCz);
         }
     }

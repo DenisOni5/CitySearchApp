@@ -20,7 +20,7 @@ namespace CitySearchApp.Application.Features.CityCZs.Handles.Queries
 
         public async Task<List<string>> Handle(GetCityCZKrajeRequest request, CancellationToken cancellationToken)
         {
-            return _repository.GetKraje();            
+            return await _repository.GetKraje();            
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using CitySearchApp.Application.Contracts.Persistance;
 using CitySearchApp.Application.DTOs.SearchDTOs;
-using CitySearchApp.Domain;
+using Domain = CitySearchApp.Domain;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -15,9 +15,9 @@ namespace CitySearchApp.ApplicationUnitTests.Mocks
     {
         public static Mock<ICityCZRepository> GetCityCZRepository()
         {
-            var cities = new List<CitySearchApp.Domain.CityCZ>
+            var cities = new List<Domain.CityCZ>
             {
-                new CitySearchApp.Domain.CityCZ
+                new Domain.CityCZ
                 {
                      Obec = "Bělá nad Radbuzou",
                      ObecCode = "553441",
@@ -29,7 +29,7 @@ namespace CitySearchApp.ApplicationUnitTests.Mocks
                      Latitude = 49.591261,
                      Longitude = 12.717718
                 },
-                new CitySearchApp.Domain.CityCZ
+                new Domain.CityCZ
                 {
                      Obec = "Chotěšov",
                      ObecCode = "557838",
@@ -41,7 +41,7 @@ namespace CitySearchApp.ApplicationUnitTests.Mocks
                      Latitude = 49.654190,
                      Longitude = 13.202822
                 },
-                new CitySearchApp.Domain.CityCZ
+                new Domain.CityCZ
                 {
                      Obec = "Praha",
                      ObecCode = "554782",
@@ -57,11 +57,11 @@ namespace CitySearchApp.ApplicationUnitTests.Mocks
 
             var mockRepo = new Mock<ICityCZRepository>();
 
-            mockRepo.Setup(r => r.LoadCitiesWithParam(It.IsAny<CityLongSearchDto>())).Returns(cities);
+            mockRepo.Setup(r => r.LoadCitiesWithParam(It.IsAny<CityLongSearchDto>())).ReturnsAsync(cities);
 
             mockRepo.Setup(r => r.GetCityCount(It.IsAny<CityShortSearchDto>())).Returns(cities.Count);
 
-            mockRepo.Setup(r => r.GetKraje()).Returns(cities.Select(c=>c.Kraj).Distinct().ToList());
+            mockRepo.Setup(r => r.GetKraje()).ReturnsAsync(cities.Select(c=>c.Kraj).Distinct().ToList());
 
             return mockRepo;
         }
