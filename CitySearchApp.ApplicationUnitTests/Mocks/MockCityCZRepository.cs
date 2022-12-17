@@ -59,7 +59,7 @@ namespace CitySearchApp.ApplicationUnitTests.Mocks
 
             mockRepo.Setup(r => r.LoadCitiesWithParam(It.IsAny<CityLongSearchDto>())).ReturnsAsync(cities);
 
-            mockRepo.Setup(r => r.GetCityCount(It.IsAny<CityShortSearchDto>())).Returns(cities.Count);
+            mockRepo.Setup(r => r.GetCityCount(It.IsAny<CityShortSearchDto>())).ReturnsAsync(cities.Count);
 
             mockRepo.Setup(r => r.GetKraje()).ReturnsAsync(cities.Select(c=>c.Kraj).Distinct().ToList());
 

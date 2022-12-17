@@ -12,6 +12,6 @@ namespace CitySearchApp.Application.Contracts.Persistance
     {
         public Task<List<string>> GetKraje();
         public Task<List<CityCZ>> LoadCitiesWithParam(CityLongSearchDto search);
-        public int GetCityCount(CityShortSearchDto search);
+        public Task<int> GetCityCount(CityShortSearchDto search);
     }
 }

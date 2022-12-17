@@ -19,7 +19,7 @@ namespace CitySearchApp.Application.Features.CityCZs.Handles.Queries
         }
         public async Task<int> Handle(GetCityCZCountRequest request, CancellationToken cancellationToken)
         {
-            return _repository.GetCityCount(request.shortSearchDto);
+            return await _repository.GetCityCount(request.shortSearchDto);
         }
     }
 }

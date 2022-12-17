@@ -22,10 +22,10 @@ namespace CitySearchApp.Persistance.Repositories
             _mapper = mapper;
         }
 
-        public int GetCityCount(CityShortSearchDto search)
+        public async Task<int> GetCityCount(CityShortSearchDto search)
         {
-            return LoadData()
-                .Where(x => (x.Kraj == search.Kraj || search.Kraj == null) && (x.Obec.StartsWith(search.Obec) || search.Obec == null)).Count();
+            return await LoadData()
+                .Where(x => (x.Kraj == search.Kraj || search.Kraj == null) && (x.Obec.StartsWith(search.Obec) || search.Obec == null)).CountAsync();
         }
 
         public async Task<List<string>> GetKraje()
