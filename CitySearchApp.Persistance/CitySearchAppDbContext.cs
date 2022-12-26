@@ -19,6 +19,7 @@ namespace CitySearchApp.Persistance
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new CityCZConfiguration());
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CitySearchAppDbContext).Assembly);
         }
 

@@ -30,14 +30,14 @@ namespace CitySearchApp.Persistance.Repositories
 
         public async Task<List<string>> GetKraje()
         {
-            var kraje = _mapper.Map<List<string>>(await LoadData().GroupBy(x => x.Kraj).Select(x => x.Key).ToListAsync());
+            var kraje = _mapper.Map<List<string>>(await LoadData().AsNoTracking().GroupBy(x => x.Kraj).Select(x => x.Key).ToListAsync());
             return kraje;
         }
 
         public async Task<List<CityCZ>> LoadCitiesWithParam(CityLongSearchDto search)
         {
 
-            return await LoadData().OrderBy(x => x.Obec)
+            return await LoadData().AsNoTracking().OrderBy(x => x.Obec)
                 .Where(x => (x.Kraj == search.Kraj || search.Kraj == null) && (x.Obec.StartsWith(search.Obec) || search.Obec == null))
                 .Skip(search.start.Value).Take(search.finish.Value).ToListAsync();
         }

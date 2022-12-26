@@ -13,7 +13,7 @@ namespace CitySearchApp.Persistance.Configurations
     {
         public void Configure(EntityTypeBuilder<CityCZ> builder)
         {
-
+            builder.HasIndex(i => i.Obec);
         }
     }
 }
